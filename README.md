@@ -1,52 +1,82 @@
-## GuessIT: A Flutter App for Image Recognition
+# **GuessIT: A Flutter App for Image Recognition**
 
-This project, GuessIT, is a Flutter application that allows users to draw an object and then uses Gemini to identify it.
+**GuessIT** is an interactive Flutter application where users can draw objects on the screen, and the app will use the power of Google's Gemini AI to recognize and identify those objects in real time.
 
-### Key Features
+## Key Features
 
-* **Drawing Board:** Users can draw an object on the screen using their finger.
-* **Real-time Debounce:** Drawing updates are captured and sent to Gemini after a short delay to avoid overwhelming the server with too many requests.
-* **Gemini Integration:** The app utilizes the Flutter Gemini library to send the captured image to a Gemini endpoint for object identification.
-* **Dynamic Response:** Once the object is recognized, the app displays the response from Gemini.
+- **Interactive Drawing Board:** Users can sketch objects directly on the screen using touch input.
+- **Real-time Debouncing:** Efficient handling of drawing inputs, with a debounce mechanism that prevents excessive requests to the server, ensuring smoother performance.
+- **Gemini AI Integration:** The app leverages the Gemini AI API to analyze the drawings and identify the objects in real time.
+- **Dynamic UI Update:** Once the object is identified, the app instantly displays the recognized object along with relevant details on the screen.
 
-### Getting Started
+## Getting Started
 
-**1. Prerequisites:**
+### Prerequisites
 
-* Flutter development environment set up (see [https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/get-started/install)):
-* A Gemini account with an API key (see [https://deepmind.google/technologies/gemini/](https://deepmind.google/technologies/gemini/))
+Ensure the following are set up:
 
-**2. Installation:**
+- Flutter development environment. Follow the [official Flutter installation guide](https://docs.flutter.dev/get-started/install).
+- A Gemini account with an API key. Create an account at [Gemini AI](https://deepmind.google/technologies/gemini) and retrieve your API key.
 
-1. Clone this repository.
-2. Install dependencies: `flutter pub get`.
+### Installation
 
-**3. Configuration:**
+1. Clone this repository using:
+   ```bash
+   git clone https://github.com/Nyxoy77/Guess_IT.git
+   cd Guess_IT
+   ```
+2. Install the required dependencies:
+   ```bash
+   flutter pub get
+   ```
 
-* Replace `api_key` in `main.dart` with your Gemini API key.
-* (Optional) Update drawing settings like color and stroke width in `DrawingPainter.dart`.
+### Configuration
 
-**4. Running the App:**
+1. Open the `main.dart` file and insert your Gemini API key:
+   ```dart
+   const String apiKey = "YOUR_GEMINI_API_KEY";
+   ```
+2. (Optional) Customize drawing preferences like colors and stroke width in the `DrawingPainter.dart` file to tailor the user experience.
 
-* Connect your device or launch an emulator.
-* Run the app: `flutter run`.
+### Running the App
 
-### How it Works
+1. Connect your Android/iOS device or start an emulator.
+2. Run the app using:
+   ```bash
+   flutter run
+   ```
 
-1. The user draws an object on the drawing board.
-2. After a short delay (debounce), the drawing is captured as an image.
-3. The captured image is sent to a Gemini endpoint using the `sendTo1Gemini` function.
-4. Gemini processes the image and sends back a response containing the identified object.
-5. The app updates the UI with the received response, displaying what the object is.
+## How It Works
 
-### Project Structure
+1. **User Draws:** The user draws any object on the provided drawing board interface.
+2. **Debouncing:** After a brief delay, the app captures the drawing as an image.
+3. **Sending to Gemini:** The image is sent to the Gemini AI API via the `sendToGemini()` function for analysis.
+4. **Object Recognition:** Gemini processes the image and sends a response back, identifying the drawn object.
+5. **Result Display:** The app updates the interface with the recognized object and its details.
 
-* `main.dart`: Entry point of the application.
-* `drawing_page.dart`: Defines the `DrawingPage` widget for drawing and capturing user input.
-* `send_data_to_gemini.dart`: Handles sending captured image data to Gemini.
-* `drawing_board.dart`: Defines the `DrawingBoard` widget for displaying the user's drawing.
-* `drawing_painter.dart`: Custom painter for drawing lines on the canvas.
+## Project Structure
 
-### Contributing
+- `main.dart`: The main entry point of the application.
+- `drawing_page.dart`: Contains the `DrawingPage` widget responsible for the user interface.
+- `send_data_to_gemini.dart`: Manages the API requests and responses from the Gemini AI.
+- `drawing_board.dart`: Widget responsible for rendering the drawing area.
+- `drawing_painter.dart`: Custom painter that handles the rendering of user-drawn lines and shapes.
 
-We welcome contributions to this project! Please feel free to fork the repository and submit pull requests. Make sure to follow our coding style and add proper documentation for your changes.
+## Contributing
+
+We welcome contributions to improve **GuessIT**! If you would like to contribute:
+
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Open a pull request, and ensure proper documentation and code style adherence.
